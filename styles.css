@@ -4,10 +4,39 @@
     padding: 0;
 }
 
+html, 
+body {
+    height: 100%;
+}
+
+.main-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+}
+
+.header-container {
+    /* border: 1px solid black; */
+    padding: 30px 0px;
+}
+
+.header-content {
+    font-size: 80px;
+}
+
 #grid-container{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 700px;
     height: 700px;
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer-container {
+    /* border: 2px solid black; */
+    padding: 30px;
 }
