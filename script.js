@@ -1,40 +1,56 @@
 const gridContainer = document.getElementById('grid-container');
-let gridSize = 16;
-let gridItemSize = 100 / gridSize;
+const sizeSlider = document.querySelector('.size-slider');
+const sizeValue = document.querySelector('.size-value');
+let gridSize = 0;
+let gridItemSize = 0;
 
-for (let i = 0; i < gridSize * gridSize; i++) //rows
+sizeSlider.addEventListener('input', function()
 {
-    let gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-    gridItem.style.width = `${gridItemSize}%`;
-    gridItem.style.height = `${gridItemSize}%`;
-    gridItem.style.border = '1px solid black';
-    gridContainer.appendChild(gridItem);
-}
+    gridSize = sizeSlider.value;
+    gridItemSize = 100 / gridSize;
+    sizeValue.textContent = `${gridSize}` + ' x ' + `${gridSize}`;
+    createGridItems(gridSize);
+})
 
-const gridItems = document.querySelectorAll('.grid-item');
-let isMouseDown = false;
+function createGridItems(gridSize)
+{
+    gridContainer.innerHTML = '';
 
-gridItems.forEach(item => {//mouseenter is like hover
-    item.addEventListener('mouseenter', function()
+    for (let i = 0; i < gridSize * gridSize; i++) //rows
     {
-        if (isMouseDown) //is true
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+        gridItem.style.width = `${gridItemSize}%`;
+        gridItem.style.height = `${gridItemSize}%`;
+        gridItem.style.border = '1px solid black';
+        gridContainer.appendChild(gridItem);
+    }
+
+    const gridItems = document.querySelectorAll('.grid-item');
+    let isMouseDown = false;
+
+    gridItems.forEach(item => {
+        item.addEventListener('mouseenter', function()
+        {   
+            if (isMouseDown)
+            {
+                item.style.backgroundColor = 'green';
+                console.log('working')
+            }
+        })
+    });
+    
+    gridItems.forEach(item => {
+        item.addEventListener('mousedown', function()
         {
-            item.style.backgroundColor = 'green';
-        }
-    })
-});
-
-gridItems.forEach(item => {
-    item.addEventListener('mousedown', function()
-    {
-        isMouseDown = true;
-    })
-});
-
-gridItems.forEach(item => {
-    item.addEventListener('mouseup', function()
-    {
-        isMouseDown = false;
-    })
-});
+            isMouseDown = true;
+        })
+    });
+    
+    gridItems.forEach(item => {
+        item.addEventListener('mouseup', function()
+        {
+            isMouseDown = false;
+        })
+    });
+}
