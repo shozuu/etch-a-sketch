@@ -10,5 +10,31 @@ for (let i = 0; i < gridSize * gridSize; i++) //rows
     gridItem.style.height = `${gridItemSize}%`;
     gridItem.style.border = '1px solid black';
     gridContainer.appendChild(gridItem);
-
 }
+
+const gridItems = document.querySelectorAll('.grid-item');
+let isMouseDown = false;
+
+gridItems.forEach(item => {//mouseenter is like hover
+    item.addEventListener('mouseenter', function()
+    {
+        if (isMouseDown) //is true
+        {
+            item.style.backgroundColor = 'green';
+        }
+    })
+});
+
+gridItems.forEach(item => {
+    item.addEventListener('mousedown', function()
+    {
+        isMouseDown = true;
+    })
+});
+
+gridItems.forEach(item => {
+    item.addEventListener('mouseup', function()
+    {
+        isMouseDown = false;
+    })
+});
