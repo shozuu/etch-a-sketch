@@ -12,10 +12,79 @@ body {
 .main-container {
     height: 100%;
     display: flex;
+    justify-content: center;
+    background-color: #e8e8e8;
+}
+
+.settings-container{
+    background-color: #202123;
+    width: 200px;
+    padding: 10px;
+    margin-right: auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+}
+
+.toggle-button-container{
+    background-color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 7px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    user-select: none;
+}  
+
+.color-picker {
+    width: 70px;
+    height: 70px;
+    border: none;
+    box-shadow: 0 0 10px rgba(7, 6, 6, 0.3);
+    cursor: pointer;
+}
+
+button {
+    align-self: stretch;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #202123;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+.size-value {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     justify-content: space-between;
-    background-color: aliceblue;
+    margin-right: auto;
 }
 
 .header-container {
@@ -29,8 +98,8 @@ body {
 
 #grid-container{
     /* border: 2px solid black; */
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
