@@ -1,8 +1,60 @@
 const gridContainer = document.getElementById('grid-container');
 const sizeSlider = document.querySelector('.size-slider');
 const sizeValue = document.querySelector('.size-value');
-let gridSize = 0;
-let gridItemSize = 0;
+const colorPicker = document.querySelector('.color-picker');
+const colorPen = document.querySelector('.color-pen');
+const rainbowPen = document.querySelector('.rainbow-pen');
+const eraser = document.querySelector('.eraser');
+const clearCanvas = document.querySelector('.clear-canvas');
+const toggleLines = document.querySelector('.toggle-lines');
+let r = 0, b = 0, g = 0; 
+let isRgbClicked = false;
+let colorValue = 'black'; // this values are set
+let gridSize = 16;        // to act as default values
+let gridItemSize = 100 / gridSize; // when no user-inputs
+createGridItems(gridSize); //has received yet
+
+
+colorPicker.addEventListener('input', function()
+{
+    colorValue = colorPicker.value;
+})
+
+colorPen.addEventListener('click', function()
+{
+    colorValue = colorPicker.value;
+    isRgbClicked = false;
+
+    colorPen.classList.add('button-clicked');
+    rainbowPen.classList.remove('button-clicked');
+    eraser.classList.remove('button-clicked');
+})
+
+rainbowPen.addEventListener('click', function()
+{
+    isRgbClicked = true;
+
+    colorPen.classList.remove('button-clicked');
+    rainbowPen.classList.add('button-clicked');
+    eraser.classList.remove('button-clicked');
+})
+
+eraser.addEventListener('click', function()
+{
+    colorValue = '#e8e8e8';
+    isRgbClicked = false;
+
+    colorPen.classList.remove('button-clicked');
+    rainbowPen.classList.remove('button-clicked');
+    eraser.classList.add('button-clicked');
+})
+
+clearCanvas.addEventListener('click', function()
+{
+    isRgbClicked = false;
+    gridContainer.innerHTML = '';
+    createGridItems(gridSize);
+})
 
 sizeSlider.addEventListener('input', function()
 {
@@ -15,27 +67,58 @@ sizeSlider.addEventListener('input', function()
 function createGridItems(gridSize)
 {
     gridContainer.innerHTML = '';
+    let showLines = true;
 
-    for (let i = 0; i < gridSize * gridSize; i++) //rows
+    for (let i = 0; i < gridSize * gridSize; i++)
     {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
         gridItem.style.width = `${gridItemSize}%`;
         gridItem.style.height = `${gridItemSize}%`;
-        gridItem.style.border = '1px solid black';
+        gridItem.style.border = '1px solid rgb(184, 184, 184';
         gridContainer.appendChild(gridItem);
     }
 
     const gridItems = document.querySelectorAll('.grid-item');
     let isMouseDown = false;
 
+    toggleLines.addEventListener('click', function()
+    {
+        showLines = !showLines;
+        console.log(showLines);
+
+        if (showLines == false)
+        {
+            toggleLines.classList.remove('button-clicked');
+            gridItems.forEach(item => {
+                item.style.border = 'none';
+            });
+        }
+        else
+        {
+            toggleLines.classList.add('button-clicked');
+            gridItems.forEach(item => {
+                item.style.border = '1px solid rgb(184, 184, 184';
+            });
+        }
+    })
+
     gridItems.forEach(item => {
         item.addEventListener('mouseenter', function()
         {   
             if (isMouseDown)
             {
-                item.style.backgroundColor = 'green';
-                console.log('working')
+                if (isRgbClicked)
+                {
+                    r = Math.floor(Math.random() * 256);
+                    b = Math.floor(Math.random() * 256);
+                    g = Math.floor(Math.random() * 256);
+
+                    colorValue = `rgb(${r}, ${g}, ${b})`;
+                    item.style.backgroundColor = colorValue;
+                }
+                else
+                    item.style.backgroundColor = colorValue;
             }
         })
     });
@@ -54,3 +137,4 @@ function createGridItems(gridSize)
         })
     });
 }
+
