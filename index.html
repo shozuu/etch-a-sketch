@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>etch-a-sketch</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+    </style>
     <script src="script.js" defer></script>
 </head>
 <body>
     <div class="main-container">
-
-        <div class="settings-container">
-
-            <div class="toggle-button-container">
-                <img src="settings-sliders.svg">
+        <div class="settings-container hidden">
+            <div class="container">
+                <div class="settings-text">Settings</div>
+                <div class="toggle-button-container">
+                    <img src="settings-sliders.svg">
+                </div>
             </div>
             <input type="color" class = "color-picker">
             <button class="color-pen">Color pen</button>
@@ -26,7 +30,11 @@
             <input class="size-slider" type="range" min="1" max="64">
         </div>
 
-        <div class="content-container">
+        <div class="replace">
+            <img src="settings-sliders.svg">
+        </div>
+
+        <div class="content-container center">
             <div class="header-container">
                 <h1 class="header-content">ETCH A SKETCH</h1>
             </div>
@@ -35,6 +43,7 @@
 
             <div class="footer-container">
                 <div class="footer-content">github @ shozuu</div>
+                <img src="github.svg">
             </div>
         </div>
     </div>
