@@ -7,6 +7,10 @@ const rainbowPen = document.querySelector('.rainbow-pen');
 const eraser = document.querySelector('.eraser');
 const clearCanvas = document.querySelector('.clear-canvas');
 const toggleLines = document.querySelector('.toggle-lines');
+const toggleSettings = document.querySelector('.toggle-button-container');
+const settingsContainer = document.querySelector('.settings-container');
+const contentContainer = document.querySelector('.content-container');
+const replace = document.querySelector('.replace');
 let r = 0, b = 0, g = 0; 
 let isRgbClicked = false;
 let colorValue = 'black'; // this values are set
@@ -138,3 +142,16 @@ function createGridItems(gridSize)
     });
 }
 
+toggleSettings.addEventListener('click', function()
+{
+    replace.style.display = '';
+    settingsContainer.classList.add('hidden');
+    contentContainer.classList.add('center');
+})
+
+replace.addEventListener('click', function()
+{
+    replace.style.display = 'none';
+    settingsContainer.classList.remove('hidden');
+    contentContainer.classList.remove('center');
+})
