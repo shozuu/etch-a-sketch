@@ -7,6 +7,7 @@
 html, 
 body {
     height: 100%;
+    font-family: 'Klee One', cursive;
 }
 
 .main-container {
@@ -18,7 +19,7 @@ body {
 
 .settings-container{
     background-color: #202123;
-    width: 200px;
+    width: 400px;
     padding: 10px;
     margin-right: auto;
     display: flex;
@@ -27,9 +28,29 @@ body {
     justify-content: space-around;
 }
 
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-text {
+    font-size: 30px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: auto;
+    padding-left: 70px;
+}
+
 .toggle-button-container{
     background-color: #e8e8e8;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     padding: 15px;
     margin: 10px;
     border-radius: 7px;
@@ -37,6 +58,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.toggle-button-container:hover {
+    background-color: #d4d4d4;
+}
+
+.replace {
+    align-self: flex-start;
+    background-color: #e8e8e8;
+    box-shadow: 0 0 10px rgba(187, 185, 185, 0.8);
+    padding: 15px;
+    margin-top: 50px;
+    margin-left: 20px;
+    border-radius: 7px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.replace:hover {
+    background-color: #d4d4d4;
 }
 
 img {
@@ -73,6 +118,7 @@ button {
     color: #ffffff;
     background-color: #202123;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
 
 button:hover {
@@ -93,6 +139,7 @@ button:hover {
     height: 10px;
     background-color: #ddd;
     outline: none;
+    cursor: pointer;
 }
 
 .content-container{
@@ -102,6 +149,10 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     margin-right: auto;
+}
+
+.center {
+    margin: auto;
 }
 
 .header-container {
@@ -124,6 +175,10 @@ button:hover {
 }
 
 .footer-container {
-    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
     padding: 30px;
+    font-size: 20px;
 }
